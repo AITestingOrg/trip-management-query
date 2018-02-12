@@ -1,0 +1,23 @@
+# Mongo config
+spring:
+  data:
+    mongodb:
+      database: trip-management-query
+      host: mongo
+      port: 27017
+      username:
+      password:
+  application:
+    name: trip-management-query
+  rabbitmq:
+    host: ${RABBIT_HOST:rabbitmq}
+
+server:
+  port: 8085
+
+amqp:
+  events:
+    host: rabbitmq
+    exchange-name: eventBus-tripquery
+    queue-name: eventQueue-tripquery
+    handlers:
