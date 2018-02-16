@@ -2,12 +2,11 @@ package org.aitesting.microservices.tripmanagement.query.unit;
 
 import org.aitesting.microservices.tripmanagement.common.TripCanceledEvent;
 import org.aitesting.microservices.tripmanagement.common.TripCreatedEvent;
+import org.aitesting.microservices.tripmanagement.common.TripStartedEvent;
 import org.aitesting.microservices.tripmanagement.query.domain.eventhandlers.TripEventHandler;
 import org.aitesting.microservices.tripmanagement.query.domain.models.Trip;
 import org.aitesting.microservices.tripmanagement.query.service.repositories.TripRepository;
-import org.axonframework.test.aggregate.FixtureConfiguration;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -34,6 +33,12 @@ public class TripEventHandlerUnitTests {
     private static TripCreatedEvent tripCreatedEvent;
 
     @Mock
+    private TripCanceledEvent tripCanceledEvent;
+
+    @Mock
+    private TripStartedEvent tripStartedEvent;
+
+    @Mock
     private static Trip trip;
 
     @Before
@@ -52,20 +57,16 @@ public class TripEventHandlerUnitTests {
         verify(tripRepository, times(1)).save(any(Trip.class));
     }
 
-    @Mock
-    private TripCanceledEvent tripCanceledEvent;
-
     @Test
     public void onTripCanceledEvent_FindOneIsCalled(){
         //arrange
 
         //act
-        tripEventHandler.on(tripCanceledEvent);
+        tripEventHandler.on(tripStartedEvent);
 
         //assert
         verify(tripRepository, times(1)).findOne(any(UUID.class));
     }
-
 
     @Test
     public void onTripCanceledEvent_SaveIsCalled(){
@@ -78,4 +79,14 @@ public class TripEventHandlerUnitTests {
         verify(tripRepository, times(1)).save(trip);
     }
 
+    @Test
+    public void onTripStartedEvent_SaveIsCalled(){
+        //arrange
+
+        //act
+        tripEventHandler.on(tripStartedEvent);
+
+        //assert
+        verify(tripRepository, times(1)).save(trip);
+    }
 }

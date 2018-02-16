@@ -17,10 +17,10 @@ import static org.mockito.Mockito.verify;
 public class TripManagementControllerUnitTests {
 
     @InjectMocks
-    TripManagementController tripManagementController = new TripManagementController();
+    private TripManagementController tripManagementController = new TripManagementController();
 
     @Mock
-    TripRepository tripRepository;
+    private TripRepository tripRepository;
 
     @Test
     public void onGetTripsCall_FindAllIsCalled(){

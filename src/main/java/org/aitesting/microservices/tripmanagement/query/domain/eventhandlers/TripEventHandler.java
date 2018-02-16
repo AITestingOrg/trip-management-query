@@ -2,6 +2,7 @@ package org.aitesting.microservices.tripmanagement.query.domain.eventhandlers;
 
 import org.aitesting.microservices.tripmanagement.common.TripCanceledEvent;
 import org.aitesting.microservices.tripmanagement.common.TripCreatedEvent;
+import org.aitesting.microservices.tripmanagement.common.TripStartedEvent;
 import org.aitesting.microservices.tripmanagement.common.TripStatus;
 import org.aitesting.microservices.tripmanagement.query.domain.models.Trip;
 import org.aitesting.microservices.tripmanagement.query.service.repositories.TripRepository;
@@ -30,6 +31,14 @@ public class TripEventHandler {
         LOG.info("Trip canceled: ", event.getId());
         Trip trip = tripRepository.findOne(event.getId());
         trip.cancelTrip();
+        tripRepository.save(trip);
+    }
+
+    @EventHandler
+    public void on(TripStartedEvent event){
+        LOG.info("Trip started: ", event.getId());
+        Trip trip = tripRepository.findOne(event.getId());
+        trip.startTrip();
         tripRepository.save(trip);
     }
 }

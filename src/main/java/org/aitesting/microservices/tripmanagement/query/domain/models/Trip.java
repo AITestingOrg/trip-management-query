@@ -1,5 +1,6 @@
 package org.aitesting.microservices.tripmanagement.query.domain.models;
 
+
 import org.aitesting.microservices.tripmanagement.common.TripStatus;
 
 import javax.validation.constraints.NotNull;
@@ -43,5 +44,8 @@ public class Trip {
 
     public void cancelTrip() {
         status = TripStatus.CANCELED;
+    }
+    public void startTrip() {
+        status = TripStatus.STARTED;
     }
 }

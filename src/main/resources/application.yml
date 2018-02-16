@@ -3,21 +3,21 @@ spring:
   data:
     mongodb:
       database: trip-management-query
-      host: mongo
+      host: ${MONGO_HOST:localhost}
       port: 27017
       username:
       password:
   application:
     name: trip-management-query
   rabbitmq:
-    host: ${RABBIT_HOST:rabbitmq}
+    host: ${RABBIT_HOST:localhost}
 
 server:
   port: 8085
 
 amqp:
   events:
-    host: rabbitmq
+    host: ${RABBIT_HOST:localhost}
     exchange-name: eventBus-tripquery
     queue-name: eventQueue-tripquery
     handlers:
