@@ -45,6 +45,7 @@ public class Trip {
     public void cancelTrip() {
         status = TripStatus.CANCELED;
     }
+
     public void startTrip() {
         status = TripStatus.STARTED;
     }
