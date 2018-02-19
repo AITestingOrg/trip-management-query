@@ -13,11 +13,11 @@ spring:
     host: ${RABBIT_HOST:localhost}
 
 server:
-  port: 8085
+  port: ${APP_PORT:8085}
 
 amqp:
   events:
     host: ${RABBIT_HOST:localhost}
-    exchange-name: eventBus-tripquery
-    queue-name: eventQueue-tripquery
+    exchange-name: eventBus
+    queue-name: eventQueue
     handlers:
