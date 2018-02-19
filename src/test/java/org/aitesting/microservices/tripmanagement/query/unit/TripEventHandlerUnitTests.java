@@ -1,6 +1,7 @@
 package org.aitesting.microservices.tripmanagement.query.unit;
 
 import org.aitesting.microservices.tripmanagement.common.TripCanceledEvent;
+import org.aitesting.microservices.tripmanagement.common.TripCompletedEvent;
 import org.aitesting.microservices.tripmanagement.common.TripCreatedEvent;
 import org.aitesting.microservices.tripmanagement.common.TripStartedEvent;
 import org.aitesting.microservices.tripmanagement.query.domain.eventhandlers.TripEventHandler;
@@ -39,7 +40,7 @@ public class TripEventHandlerUnitTests {
     private TripStartedEvent tripStartedEvent;
 
     @Mock
-    private TripStartedEvent tripCompletedEvent;
+    private TripCompletedEvent tripCompletedEvent;
 
     @Mock
     private static Trip trip;
