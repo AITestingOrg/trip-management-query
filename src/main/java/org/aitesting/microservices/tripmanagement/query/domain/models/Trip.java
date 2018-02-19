@@ -48,4 +48,7 @@ public class Trip {
     public void startTrip() {
         status = TripStatus.STARTED;
     }
+    public void completeTrip() {
+        status = TripStatus.COMPLETED;
+    }
 }

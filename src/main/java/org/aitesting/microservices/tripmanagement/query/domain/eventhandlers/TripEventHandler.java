@@ -1,9 +1,6 @@
 package org.aitesting.microservices.tripmanagement.query.domain.eventhandlers;
 
-import org.aitesting.microservices.tripmanagement.common.TripCanceledEvent;
-import org.aitesting.microservices.tripmanagement.common.TripCreatedEvent;
-import org.aitesting.microservices.tripmanagement.common.TripStartedEvent;
-import org.aitesting.microservices.tripmanagement.common.TripStatus;
+import org.aitesting.microservices.tripmanagement.common.*;
 import org.aitesting.microservices.tripmanagement.query.domain.models.Trip;
 import org.aitesting.microservices.tripmanagement.query.service.repositories.TripRepository;
 import org.axonframework.eventhandling.EventHandler;
@@ -39,6 +36,14 @@ public class TripEventHandler {
         LOG.info("Trip started: ", event.getId());
         Trip trip = tripRepository.findOne(event.getId());
         trip.startTrip();
+        tripRepository.save(trip);
+    }
+
+    @EventHandler
+    public void on(TripCompletedEvent event){
+        LOG.info("Trip completed: ", event.getId());
+        Trip trip = tripRepository.findOne(event.getId());
+        trip.completeTrip();
         tripRepository.save(trip);
     }
 }

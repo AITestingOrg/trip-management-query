@@ -39,6 +39,9 @@ public class TripEventHandlerUnitTests {
     private TripStartedEvent tripStartedEvent;
 
     @Mock
+    private TripStartedEvent tripCompletedEvent;
+
+    @Mock
     private static Trip trip;
 
     @Before
@@ -85,6 +88,17 @@ public class TripEventHandlerUnitTests {
 
         //act
         tripEventHandler.on(tripStartedEvent);
+
+        //assert
+        verify(tripRepository, times(1)).save(trip);
+    }
+
+    @Test
+    public void onTripCompletedEvent_SaveIsCalled(){
+        //arrange
+
+        //act
+        tripEventHandler.on(tripCompletedEvent);
 
         //assert
         verify(tripRepository, times(1)).save(trip);

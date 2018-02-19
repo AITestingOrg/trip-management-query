@@ -27,6 +27,6 @@ public class TripManagementController {
 
     @GetMapping("trip/{id}")
     public @ResponseBody Trip getTrip(@PathVariable("id") UUID id) {
-        return  tripRepository.findOne(id);
+        return tripRepository.findOne(id);
     }
 }
