@@ -21,7 +21,7 @@ services:
       - RABBIT_HOST=rabbitmq
       - MONGO_HOST=mongo
     ports:
-      - "9000:8080"
+      - "8080"
     depends_on:
       - rabbitmq
       - mongo
@@ -32,7 +32,7 @@ services:
       - RABBIT_HOST=rabbitmq
       - MONGO_HOST=mongo
     ports:
-      - '9001:8080'
+      - '8080'
     depends_on:
       - rabbitmq
       - mongo
