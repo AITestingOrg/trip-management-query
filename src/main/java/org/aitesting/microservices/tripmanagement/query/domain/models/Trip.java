@@ -2,10 +2,12 @@ package org.aitesting.microservices.tripmanagement.query.domain.models;
 
 
 import org.aitesting.microservices.tripmanagement.common.TripStatus;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
+@Document(collection = "trips")
 public class Trip {
     @NotNull
     private UUID id;
@@ -42,14 +44,7 @@ public class Trip {
         return status;
     }
 
-    public void cancelTrip() {
-        status = TripStatus.CANCELED;
-    }
-
-    public void startTrip() {
-        status = TripStatus.STARTED;
-    }
-    public void completeTrip() {
-        status = TripStatus.COMPLETED;
+    public void setStatus(TripStatus status) {
+        this.status = status;
     }
 }

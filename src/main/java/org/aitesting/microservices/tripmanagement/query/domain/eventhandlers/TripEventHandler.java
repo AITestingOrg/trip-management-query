@@ -7,7 +7,9 @@ import org.axonframework.eventhandling.EventHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TripEventHandler {
     protected static final Logger LOG = LoggerFactory.getLogger(TripEventHandler.class);
 
@@ -27,7 +29,7 @@ public class TripEventHandler {
     public void on(TripCanceledEvent event){
         LOG.info("Trip canceled: ", event.getId());
         Trip trip = tripRepository.findOne(event.getId());
-        trip.cancelTrip();
+        trip.setStatus(TripStatus.CANCELED);
         tripRepository.save(trip);
     }
 
@@ -35,7 +37,7 @@ public class TripEventHandler {
     public void on(TripStartedEvent event){
         LOG.info("Trip started: ", event.getId());
         Trip trip = tripRepository.findOne(event.getId());
-        trip.startTrip();
+        trip.setStatus(TripStatus.STARTED);
         tripRepository.save(trip);
     }
 
@@ -43,7 +45,7 @@ public class TripEventHandler {
     public void on(TripCompletedEvent event){
         LOG.info("Trip completed: ", event.getId());
         Trip trip = tripRepository.findOne(event.getId());
-        trip.completeTrip();
+        trip.setStatus(TripStatus.COMPLETED);
         tripRepository.save(trip);
     }
 }
