@@ -1,4 +1,4 @@
-package org.aitesting.microservices.tripmanagement.query.unit;
+package org.aitesting.microservices.tests.unit;
 
 import org.aitesting.microservices.tripmanagement.common.TripCanceledEvent;
 import org.aitesting.microservices.tripmanagement.common.TripCompletedEvent;
