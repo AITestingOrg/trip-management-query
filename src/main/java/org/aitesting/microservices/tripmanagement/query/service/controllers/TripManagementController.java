@@ -1,9 +1,9 @@
 package org.aitesting.microservices.tripmanagement.query.service.controllers;
 
+import org.aitesting.microservices.exceptions.NotFoundException;
 import org.aitesting.microservices.tripmanagement.query.domain.models.Trip;
 import org.aitesting.microservices.tripmanagement.query.service.repositories.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +22,12 @@ public class TripManagementController {
     }
 
     @GetMapping("trip/{id}")
-    public Trip getTrip(@PathVariable("id") UUID id) {
-        return tripRepository.findOne(id);
+    public Trip getTrip(@PathVariable("id") UUID id) throws NotFoundException {
+        Trip trip = tripRepository.findOne(id);
+        if(trip != null) {
+            return trip;
+        }
+        throw new NotFoundException();
     }
+
 }

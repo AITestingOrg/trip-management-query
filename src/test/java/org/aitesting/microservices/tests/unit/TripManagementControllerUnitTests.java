@@ -1,5 +1,6 @@
 package org.aitesting.microservices.tests.unit;
 
+import org.aitesting.microservices.exceptions.NotFoundException;
 import org.aitesting.microservices.tripmanagement.query.service.controllers.TripManagementController;
 import org.aitesting.microservices.tripmanagement.query.service.repositories.TripRepository;
 import org.junit.Test;
@@ -34,8 +35,8 @@ public class TripManagementControllerUnitTests {
         verify(tripRepository, times(1)).findAll();
     }
 
-    @Test
-    public void onGetTripCall_FindOneIsCalled(){
+    @Test(expected = NotFoundException.class)
+    public void onGetTripCall_FindOneIsCalled() throws NotFoundException {
         //arrange
 
         //act
