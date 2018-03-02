@@ -1,4 +1,4 @@
-package TripQuery
+package tripmanagement.query
 
 import org.springframework.cloud.contract.spec.*
 

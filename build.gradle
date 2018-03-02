@@ -11,8 +11,6 @@ buildscript {
 		classpath 'au.com.dius:pact-jvm-provider-gradle_2.12:3.5.13'
 		classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
 		classpath "org.springframework.cloud:spring-cloud-contract-gradle-plugin:${verifierVersion}"
-
-
 	}
 }
 plugins {
@@ -61,6 +59,6 @@ dependencies {
 
 contracts {
 	baseClassMappings {
-		baseClassMapping(".*", "org.aitesting.microservices.tests.provider.TripContractBase")
+		baseClassMapping(".*tripmanagement.cmd.*", "org.aitesting.microservices.tests.provider.TripContractBase")
 	}
 }
