@@ -1,6 +1,6 @@
 package org.aitesting.microservices.tripmanagement.query.domain.eventhandlers;
 
-import org.aitesting.microservices.tripmanagement.common.*;
+import org.aitesting.microservices.tripmanagement.common.events.*;
 import org.aitesting.microservices.tripmanagement.query.domain.models.Trip;
 import org.aitesting.microservices.tripmanagement.query.service.repositories.TripRepository;
 import org.axonframework.eventhandling.EventHandler;

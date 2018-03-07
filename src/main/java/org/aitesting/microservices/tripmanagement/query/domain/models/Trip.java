@@ -1,7 +1,6 @@
 package org.aitesting.microservices.tripmanagement.query.domain.models;
 
-
-import org.aitesting.microservices.tripmanagement.common.TripStatus;
+import org.aitesting.microservices.tripmanagement.common.events.TripStatus;
 
 import javax.validation.constraints.NotNull;
 import java.util.UUID;

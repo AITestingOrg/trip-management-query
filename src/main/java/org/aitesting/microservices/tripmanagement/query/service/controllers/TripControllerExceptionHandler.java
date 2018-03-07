@@ -1,6 +1,6 @@
 package org.aitesting.microservices.tripmanagement.query.service.controllers;
 
-import org.aitesting.microservices.exceptions.NotFoundException;
+import org.aitesting.microservices.tripmanagement.common.exceptions.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
