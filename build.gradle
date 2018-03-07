@@ -1,19 +1,28 @@
 buildscript {
 	ext {
 		springBootVersion = '1.5.10.RELEASE'
+		verifierVersion = '1.2.3.RELEASE'
 		axonVersion = '3.1.2'
 	}
 	repositories {
 		mavenCentral()
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath 'au.com.dius:pact-jvm-provider-gradle_2.12:3.5.13'
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+		classpath "org.springframework.cloud:spring-cloud-contract-gradle-plugin:${verifierVersion}"
 	}
 }
-
+plugins {
+	id "au.com.dius.pact" version "3.5.13"
+	id "com.wiredforcode.spawn" version "0.8.2"
+}
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'groovy'
+apply plugin: 'spring-cloud-contract'
+
 
 group = 'org.aitesting.microservices'
 version = '0.0.1-SNAPSHOT'
@@ -35,9 +44,21 @@ dependencies {
 	compile("org.axonframework:axon-spring-boot-autoconfigure:${axonVersion}")
 	compile("org.axonframework:axon-amqp:${axonVersion}")
 	compile("org.axonframework:axon-test:${axonVersion}")
+	compile('au.com.dius:pact-jvm-provider-junit_2.11:3.5.13')
+
 
 	compile('org.springframework.boot:spring-boot-starter-amqp')
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('org.codehaus.groovy:groovy-all:2.4.6')
+	testCompile("org.springframework.cloud:spring-cloud-starter-contract-verifier:${verifierVersion}")
+	testCompile("org.springframework.cloud:spring-cloud-contract-spec:${verifierVersion}")
+	testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+}
+
+contracts {
+	baseClassMappings {
+		baseClassMapping(".*tripmanagement.*", "org.aitesting.microservices.tests.provider.TripContractBase")
+	}
 }
