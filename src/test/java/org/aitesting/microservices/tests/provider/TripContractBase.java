@@ -1,7 +1,7 @@
 package org.aitesting.microservices.tests.provider;
 
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
-import org.aitesting.microservices.tripmanagement.common.TripStatus;
+import org.aitesting.microservices.tripmanagement.common.events.TripStatus;
 import org.aitesting.microservices.tripmanagement.query.TripManagementQueryApplication;
 import org.aitesting.microservices.tripmanagement.query.domain.models.Trip;
 import org.aitesting.microservices.tripmanagement.query.service.repositories.TripRepository;

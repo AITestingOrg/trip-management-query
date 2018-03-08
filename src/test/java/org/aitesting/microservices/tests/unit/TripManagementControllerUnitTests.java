@@ -1,6 +1,6 @@
 package org.aitesting.microservices.tests.unit;
 
-import org.aitesting.microservices.exceptions.NotFoundException;
+import org.aitesting.microservices.tripmanagement.common.exceptions.NotFoundException;
 import org.aitesting.microservices.tripmanagement.query.service.controllers.TripManagementController;
 import org.aitesting.microservices.tripmanagement.query.service.repositories.TripRepository;
 import org.junit.Test;
