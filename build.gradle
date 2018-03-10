@@ -22,6 +22,7 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'groovy'
 apply plugin: 'spring-cloud-contract'
+apply plugin: "jacoco"
 
 
 group = 'org.aitesting.microservices'
@@ -62,3 +63,20 @@ contracts {
 		baseClassMapping(".*tripmanagement.*", "org.aitesting.microservices.tests.provider.TripContractBase")
 	}
 }
+
+jacocoTestReport {
+	reports {
+		html.destination file("${buildDir}/jacocoHtml")
+	}
+}
+
+jacocoTestCoverageVerification {
+	violationRules {
+		rule {
+			limit {
+				minimum = 0.85
+			}
+		}
+	}
+}
+test.finalizedBy(jacocoTestCoverageVerification)
