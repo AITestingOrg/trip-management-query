@@ -1,6 +1,5 @@
 package org.aitesting.microservices.tests.provider;
 
-import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import org.aitesting.microservices.tripmanagement.common.events.TripStatus;
 import org.aitesting.microservices.tripmanagement.query.TripManagementQueryApplication;
 import org.aitesting.microservices.tripmanagement.query.domain.models.Trip;
@@ -12,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
+import io.restassured.module.mockmvc.RestAssuredMockMvc;
 
 import static org.aitesting.microservices.tests.helpers.TestConstants.*;
 
