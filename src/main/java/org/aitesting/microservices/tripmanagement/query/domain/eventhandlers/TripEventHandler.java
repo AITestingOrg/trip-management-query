@@ -1,6 +1,6 @@
 package org.aitesting.microservices.tripmanagement.query.domain.eventhandlers;
 
-import org.aitesting.microservices.tripmanagement.common.*;
+import org.aitesting.microservices.tripmanagement.common.events.*;
 import org.aitesting.microservices.tripmanagement.query.domain.models.Trip;
 import org.aitesting.microservices.tripmanagement.query.service.repositories.TripRepository;
 import org.axonframework.eventhandling.EventHandler;
@@ -20,14 +20,14 @@ public class TripEventHandler {
 
     @EventHandler
     public void on(TripCreatedEvent event){
-        LOG.info("Trip created: ", event.getId());
+        LOG.info("Trip created: {}", event.getId());
         tripRepository.save(new Trip(event.getId(), event.getUserId(),
                 event.getOriginAddress(), event.getDestinationAddress(), TripStatus.CREATED));
     }
 
     @EventHandler
     public void on(TripCanceledEvent event){
-        LOG.info("Trip canceled: ", event.getId());
+        LOG.info("Trip canceled: {}", event.getId());
         Trip trip = tripRepository.findOne(event.getId());
         trip.setStatus(TripStatus.CANCELED);
         tripRepository.save(trip);
@@ -35,7 +35,7 @@ public class TripEventHandler {
 
     @EventHandler
     public void on(TripStartedEvent event){
-        LOG.info("Trip started: ", event.getId());
+        LOG.info("Trip started: {}", event.getId());
         Trip trip = tripRepository.findOne(event.getId());
         trip.setStatus(TripStatus.STARTED);
         tripRepository.save(trip);
@@ -43,7 +43,7 @@ public class TripEventHandler {
 
     @EventHandler
     public void on(TripCompletedEvent event){
-        LOG.info("Trip completed: ", event.getId());
+        LOG.info("Trip completed: {}", event.getId());
         Trip trip = tripRepository.findOne(event.getId());
         trip.setStatus(TripStatus.COMPLETED);
         tripRepository.save(trip);

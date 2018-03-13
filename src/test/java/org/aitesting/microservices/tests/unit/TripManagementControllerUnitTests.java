@@ -1,5 +1,6 @@
-package org.aitesting.microservices.tripmanagement.query.unit;
+package org.aitesting.microservices.tests.unit;
 
+import org.aitesting.microservices.tripmanagement.common.exceptions.NotFoundException;
 import org.aitesting.microservices.tripmanagement.query.service.controllers.TripManagementController;
 import org.aitesting.microservices.tripmanagement.query.service.repositories.TripRepository;
 import org.junit.Test;
@@ -10,6 +11,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.UUID;
 
+import static org.aitesting.microservices.tests.helpers.TestConstants.TRIP_ID1;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -33,15 +35,14 @@ public class TripManagementControllerUnitTests {
         verify(tripRepository, times(1)).findAll();
     }
 
-    @Test
-    public void onGetTripCall_FindOneIsCalled(){
+    @Test(expected = NotFoundException.class)
+    public void onGetTripCall_FindOneIsCalled() throws NotFoundException {
         //arrange
-        UUID tripId = UUID.randomUUID();
 
         //act
-        tripManagementController.getTrip(tripId);
+        tripManagementController.getTrip(TRIP_ID1);
 
         //assert
-        verify(tripRepository, times(1)).findOne(tripId);
+        verify(tripRepository, times(1)).findOne(TRIP_ID1);
     }
 }
