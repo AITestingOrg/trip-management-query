@@ -1,5 +1,9 @@
 package org.aitesting.microservices.tests.unit;
 
+import static org.aitesting.microservices.tests.helpers.TestConstants.TRIP_ID1;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
 import org.aitesting.microservices.tripmanagement.common.exceptions.NotFoundException;
 import org.aitesting.microservices.tripmanagement.query.service.controllers.TripManagementController;
 import org.aitesting.microservices.tripmanagement.query.service.repositories.TripRepository;
@@ -8,12 +12,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import java.util.UUID;
-
-import static org.aitesting.microservices.tests.helpers.TestConstants.TRIP_ID1;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TripManagementControllerUnitTests {
@@ -25,7 +23,7 @@ public class TripManagementControllerUnitTests {
     private TripRepository tripRepository;
 
     @Test
-    public void onGetTripsCall_FindAllIsCalled(){
+    public void onGetTripsCall_FindAllIsCalled() {
         //arrange
 
         //act
