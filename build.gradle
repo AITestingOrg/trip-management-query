@@ -47,9 +47,12 @@ dependencies {
 	compile("org.axonframework:axon-amqp:${axonVersion}")
 	compile("org.axonframework:axon-test:${axonVersion}")
 
+	compile('org.springframework.retry:spring-retry:1.1.2.RELEASE')
+
 	compile('org.springframework.boot:spring-boot-starter-amqp')
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-aop')
 
 	testCompile('au.com.dius:pact-jvm-provider-junit_2.11:3.5.13')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
