@@ -24,7 +24,7 @@ public class TripManagementController {
     @GetMapping("trip/{id}")
     public Trip getTrip(@PathVariable("id") UUID id) throws NotFoundException {
         Trip trip = tripRepository.findOne(id);
-        if(trip != null) {
+        if (trip != null) {
             return trip;
         }
         throw new NotFoundException();
