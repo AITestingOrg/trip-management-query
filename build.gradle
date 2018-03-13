@@ -95,3 +95,4 @@ jacocoTestCoverageVerification {
 		}
 	}
 }
+test.finalizedBy(jacocoTestCoverageVerification)
