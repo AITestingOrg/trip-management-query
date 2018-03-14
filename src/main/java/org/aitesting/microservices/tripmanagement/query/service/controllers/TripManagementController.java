@@ -1,13 +1,12 @@
 package org.aitesting.microservices.tripmanagement.query.service.controllers;
 
+import java.util.List;
+import java.util.UUID;
 import org.aitesting.microservices.tripmanagement.common.exceptions.NotFoundException;
 import org.aitesting.microservices.tripmanagement.query.domain.models.Trip;
 import org.aitesting.microservices.tripmanagement.query.service.repositories.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("api")

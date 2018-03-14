@@ -19,14 +19,14 @@ public class TripEventHandler {
     public TripEventHandler() {}
 
     @EventHandler
-    public void on(TripCreatedEvent event){
+    public void on(TripCreatedEvent event) {
         LOG.info("Trip created: {}", event.getId());
         tripRepository.save(new Trip(event.getId(), event.getUserId(),
                 event.getOriginAddress(), event.getDestinationAddress(), TripStatus.CREATED));
     }
 
     @EventHandler
-    public void on(TripCanceledEvent event){
+    public void on(TripCanceledEvent event) {
         LOG.info("Trip canceled: {}", event.getId());
         Trip trip = tripRepository.findOne(event.getId());
         trip.setStatus(TripStatus.CANCELED);
@@ -34,7 +34,7 @@ public class TripEventHandler {
     }
 
     @EventHandler
-    public void on(TripStartedEvent event){
+    public void on(TripStartedEvent event) {
         LOG.info("Trip started: {}", event.getId());
         Trip trip = tripRepository.findOne(event.getId());
         trip.setStatus(TripStatus.STARTED);
@@ -42,7 +42,7 @@ public class TripEventHandler {
     }
 
     @EventHandler
-    public void on(TripCompletedEvent event){
+    public void on(TripCompletedEvent event) {
         LOG.info("Trip completed: {}", event.getId());
         Trip trip = tripRepository.findOne(event.getId());
         trip.setStatus(TripStatus.COMPLETED);
