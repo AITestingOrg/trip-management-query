@@ -28,5 +28,4 @@ public class TripManagementController {
         }
         throw new NotFoundException();
     }
-
 }
