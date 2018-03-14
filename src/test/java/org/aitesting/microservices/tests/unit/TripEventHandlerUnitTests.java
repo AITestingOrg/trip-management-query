@@ -1,5 +1,11 @@
 package org.aitesting.microservices.tests.unit;
 
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.UUID;
 import org.aitesting.microservices.tripmanagement.common.events.*;
 import org.aitesting.microservices.tripmanagement.query.domain.eventhandlers.TripEventHandler;
 import org.aitesting.microservices.tripmanagement.query.domain.models.Trip;
@@ -10,13 +16,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import java.util.UUID;
-
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TripEventHandlerUnitTests {
@@ -43,12 +42,12 @@ public class TripEventHandlerUnitTests {
     private static Trip trip;
 
     @Before
-    public void setup(){
+    public void setup() {
         when(tripRepository.findOne(any(UUID.class))).thenReturn(trip);
     }
 
     @Test
-    public void onTripCreatedEvent_SaveIsCalled(){
+    public void onTripCreatedEvent_SaveIsCalled() {
         //arrange
 
         //act
@@ -59,7 +58,7 @@ public class TripEventHandlerUnitTests {
     }
 
     @Test
-    public void onTripCanceledEvent_FindOneIsCalled(){
+    public void onTripCanceledEvent_FindOneIsCalled() {
         //arrange
 
         //act
@@ -70,7 +69,7 @@ public class TripEventHandlerUnitTests {
     }
 
     @Test
-    public void onTripCanceledEvent_SaveIsCalled(){
+    public void onTripCanceledEvent_SaveIsCalled() {
         //arrange
 
         //act
@@ -81,7 +80,7 @@ public class TripEventHandlerUnitTests {
     }
 
     @Test
-    public void onTripStartedEvent_SaveIsCalled(){
+    public void onTripStartedEvent_SaveIsCalled() {
         //arrange
 
         //act
@@ -92,7 +91,7 @@ public class TripEventHandlerUnitTests {
     }
 
     @Test
-    public void onTripCompletedEvent_SaveIsCalled(){
+    public void onTripCompletedEvent_SaveIsCalled() {
         //arrange
 
         //act
