@@ -25,18 +25,6 @@ services:
     depends_on:
       - rabbitmq
       - mongo
-  trip-management-query:
-    build: ./
-    container_name: 'trip-management-query'
-    environment:
-      - RABBIT_HOST=rabbitmq
-      - MONGO_HOST=mongo
-    ports:
-      - '8080'
-    depends_on:
-      - rabbitmq
-      - mongo
-      - trip-management-cmd
       - discovery-service
   discovery-service:
     image: springcloud/eureka

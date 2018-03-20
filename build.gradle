@@ -30,6 +30,10 @@ group = 'org.aitesting.microservices'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
+ext {
+	springCloudVersion = 'Edgware.SR2'
+}
+
 repositories {
 	mavenCentral()
 }
@@ -53,6 +57,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-aop')
+	compile('org.springframework.cloud:spring-cloud-starter-eureka')
 
 	testCompile('au.com.dius:pact-jvm-provider-junit_2.11:3.5.13')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
@@ -60,6 +65,12 @@ dependencies {
 	testCompile("org.springframework.cloud:spring-cloud-starter-contract-verifier:${verifierVersion}")
 	testCompile("org.springframework.cloud:spring-cloud-contract-spec:${verifierVersion}")
 	testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
 }
 
 contracts {

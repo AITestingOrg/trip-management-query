@@ -1,9 +1,11 @@
 package org.aitesting.microservices.tests.unit;
 
 import static org.aitesting.microservices.tests.helpers.TestConstants.TRIP_ID1;
+import static org.aitesting.microservices.tests.helpers.TestConstants.USER_ID;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import org.aitesting.microservices.tripmanagement.common.events.TripStatus;
 import org.aitesting.microservices.tripmanagement.common.exceptions.NotFoundException;
 import org.aitesting.microservices.tripmanagement.query.service.controllers.TripManagementController;
 import org.aitesting.microservices.tripmanagement.query.service.repositories.TripRepository;
@@ -33,8 +35,8 @@ public class TripManagementControllerUnitTests {
         verify(tripRepository, times(1)).findAll();
     }
 
-    @Test(expected = NotFoundException.class)
-    public void onGetTripCall_FindOneIsCalled() throws NotFoundException {
+    @Test
+    public void onGetTripCall_FindOneIsCalled() {
         //arrange
 
         //act
@@ -42,5 +44,27 @@ public class TripManagementControllerUnitTests {
 
         //assert
         verify(tripRepository, times(1)).findOne(TRIP_ID1);
+    }
+
+    @Test
+    public void ongetTripByUser_FindByUserIdCalled() {
+        //arrange
+
+        //act
+        tripManagementController.getTripByUser(USER_ID);
+
+        //assert
+        verify(tripRepository, times(1)).findByUserId(USER_ID);
+    }
+
+    @Test
+    public void ongetTripByUserAndStatus_FindByUserIdAndStatusIsCalled() {
+        //arrange
+
+        //act
+        tripManagementController.getTripByUserAndStatus(USER_ID, "completed");
+
+        //assert
+        verify(tripRepository, times(1)).findByUserIdAndStatus(USER_ID, TripStatus.COMPLETED);
     }
 }

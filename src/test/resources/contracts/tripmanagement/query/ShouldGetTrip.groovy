@@ -6,7 +6,7 @@ Contract.make {
     description("When a Get request with a TripId is made, the corresponding trip is returned")
     request {
         method 'GET'
-        url '/api/trip/f849769e-2534-84a6-d475-5c2d701343ab'
+        url '/api/v1/trip/f849769e-2534-84a6-d475-5c2d701343ab'
     }
     response {
         status 200
