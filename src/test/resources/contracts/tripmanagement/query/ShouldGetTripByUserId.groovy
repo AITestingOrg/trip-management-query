@@ -3,10 +3,10 @@ package tripmanagement.query
 import org.springframework.cloud.contract.spec.*
 
 Contract.make {
-    description("When a Get request for all the trips should get all the trips")
+    description("When a Get request with a UserId is made, the corresponding trips are returned")
     request {
         method 'GET'
-        url '/api/v1/trips'
+        url '/api/v1/trip/user/123e4567-e89b-12d3-a456-426655440000'
     }
     response {
         status 200

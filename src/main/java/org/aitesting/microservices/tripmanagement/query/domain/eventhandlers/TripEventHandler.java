@@ -20,32 +20,36 @@ public class TripEventHandler {
 
     @EventHandler
     public void on(TripCreatedEvent event) {
-        LOG.info("Trip created: {}", event.getId());
+        LOG.trace("Creating trip: {}", event.getId());
         tripRepository.save(new Trip(event.getId(), event.getUserId(),
                 event.getOriginAddress(), event.getDestinationAddress(), TripStatus.CREATED));
+        LOG.info("Trip created: {}", event.getId());
     }
 
     @EventHandler
     public void on(TripCanceledEvent event) {
-        LOG.info("Trip canceled: {}", event.getId());
+        LOG.trace("Cancelling Trip: {}", event.getId());
         Trip trip = tripRepository.findOne(event.getId());
         trip.setStatus(TripStatus.CANCELED);
         tripRepository.save(trip);
+        LOG.info("Trip canceled: {}", event.getId());
     }
 
     @EventHandler
     public void on(TripStartedEvent event) {
-        LOG.info("Trip started: {}", event.getId());
+        LOG.trace("Starting trip: {}", event.getId());
         Trip trip = tripRepository.findOne(event.getId());
         trip.setStatus(TripStatus.STARTED);
         tripRepository.save(trip);
+        LOG.info("Trip started: {}", event.getId());
     }
 
     @EventHandler
     public void on(TripCompletedEvent event) {
-        LOG.info("Trip completed: {}", event.getId());
+        LOG.trace("Completing trip: {}", event.getId());
         Trip trip = tripRepository.findOne(event.getId());
         trip.setStatus(TripStatus.COMPLETED);
         tripRepository.save(trip);
+        LOG.info("Trip completed: {}", event.getId());
     }
 }

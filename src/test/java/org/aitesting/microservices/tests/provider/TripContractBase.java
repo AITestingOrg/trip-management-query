@@ -12,10 +12,12 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringRunner.class)
+@Profile("test")
 @SpringBootTest(classes = TripManagementQueryApplication.class)
 public abstract class TripContractBase {
 
@@ -32,6 +34,7 @@ public abstract class TripContractBase {
         tripRepository.save(new Trip(TRIP_ID1, USER_ID, FROM, TO, TripStatus.STARTED));
         tripRepository.save(new Trip(TRIP_ID2, USER_ID, FROM, TO, TripStatus.CREATED));
         tripRepository.save(new Trip(TRIP_ID3, USER_ID, FROM, TO, TripStatus.COMPLETED));
+        tripRepository.save(new Trip(TRIP_ID4, USER_ID, FROM, TO, TripStatus.CANCELED));
     }
 
     @After
