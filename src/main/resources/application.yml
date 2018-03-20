@@ -30,7 +30,7 @@ amqp:
 
 logging:
   level:
-    root: WARN
+    root: INFO
     org:
       springframework:
         security: DEBUG
