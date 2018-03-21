@@ -3,6 +3,7 @@ buildscript {
 		springBootVersion = '1.5.10.RELEASE'
 		verifierVersion = '1.2.3.RELEASE'
 		axonVersion = '3.1.2'
+		springfoxVersion = '2.7.0'
 	}
 	repositories {
 		mavenCentral()
@@ -50,6 +51,8 @@ dependencies {
 	compile("org.axonframework:axon-spring-boot-autoconfigure:${axonVersion}")
 	compile("org.axonframework:axon-amqp:${axonVersion}")
 	compile("org.axonframework:axon-test:${axonVersion}")
+	compile("io.springfox:springfox-swagger2:${springfoxVersion}")
+	compile("io.springfox:springfox-swagger-ui:${springfoxVersion}")
 
 	compile('org.springframework.retry:spring-retry:1.1.2.RELEASE')
 
