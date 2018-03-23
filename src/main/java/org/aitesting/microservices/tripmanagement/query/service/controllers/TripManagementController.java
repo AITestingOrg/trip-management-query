@@ -54,12 +54,13 @@ public class TripManagementController {
     }
 
     @GetMapping("trip/user/{userId}/status/{status}")
-    public ResponseEntity<List<Trip>> getTripByUserAndStatus(@PathVariable("userId") UUID userId, @PathVariable("status") String status) {
+    public ResponseEntity<List<Trip>> getTripByUserAndStatus(@PathVariable("userId") UUID userId,
+                                                             @PathVariable("status") String status) {
         logger.info(String.format("Request for trips from user: %s with status: %s", userId, status));
         TripStatus tripStatus;
         try {
             tripStatus = TripStatus.valueOf(status.toUpperCase());
-        } catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             logger.trace(String.format("Bad argument status: %s", status));
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
