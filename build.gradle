@@ -86,6 +86,8 @@ contracts {
 checkstyle {
 	toolVersion = "8.7"
 	configFile = new File(rootDir, "checkstyle.xml")
+	maxWarnings = 0
+	maxErrors = 0
 }
 
 checkstyleMain {

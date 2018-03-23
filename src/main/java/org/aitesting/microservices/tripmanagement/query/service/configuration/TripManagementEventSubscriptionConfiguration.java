@@ -4,5 +4,5 @@ import org.aist.libs.eventsourcing.configuration.configurations.AmqpEventSubscri
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class TripManagementEventSubscriptionConfiguration  extends AmqpEventSubscriptionConfiguration {
+public class TripManagementEventSubscriptionConfiguration extends AmqpEventSubscriptionConfiguration {
 }
