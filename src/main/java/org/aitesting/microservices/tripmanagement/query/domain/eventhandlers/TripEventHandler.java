@@ -22,7 +22,7 @@ public class TripEventHandler {
     public void on(TripCreatedEvent event) {
         LOG.trace("Creating trip: {}", event.getId());
         tripRepository.save(new Trip(event.getId(), event.getUserId(),
-                event.getOriginAddress(), event.getDestinationAddress(), TripStatus.CREATED));
+                event.getOriginAddress(), event.getDestinationAddress(), event.getTripInvoice(), TripStatus.CREATED));
         LOG.info("Trip created: {}", event.getId());
     }
 
@@ -55,12 +55,19 @@ public class TripEventHandler {
 
     @EventHandler
     public void on(TripUpdatedEvent event) {
-        LOG.trace("Completing trip: {}", event.getId());
+        LOG.trace("Updating trip: {}", event.getId());
         Trip trip = tripRepository.findOne(event.getId());
-        trip.setStatus(TripStatus.COMPLETED);
+        if(!trip.getOriginAddress().equals(event.getOriginAddress())) {
+            LOG.info("Origin address updated: {}", event.getOriginAddress());
+        }
+        if(!trip.getDestinationAddress().equals(event.getDestinationAddress())) {
+            LOG.info("Destination address updated: {}", event.getDestinationAddress());
+        }
+        trip.setStatus(TripStatus.UPDATED);
         trip.setOriginAddress(event.getOriginAddress());
         trip.setDestinationAddress(event.getDestinationAddress());
+        trip.setTripInvoice(event.getTripInvoice());
         tripRepository.save(trip);
-        LOG.info("Trip completed: {}", event.getId());
+        LOG.info("Trip updated: {}", event.getId());
     }
 }
