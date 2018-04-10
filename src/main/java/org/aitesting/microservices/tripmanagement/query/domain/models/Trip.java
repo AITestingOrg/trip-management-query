@@ -41,6 +41,14 @@ public class Trip {
         return status;
     }
 
+    public void setOriginAddress(String originAddress) {
+        this.originAddress = originAddress;
+    }
+
+    public void setDestinationAddress(String destinationAddress) {
+        this.destinationAddress = destinationAddress;
+    }
+
     public void setStatus(TripStatus status) {
         this.status = status;
     }

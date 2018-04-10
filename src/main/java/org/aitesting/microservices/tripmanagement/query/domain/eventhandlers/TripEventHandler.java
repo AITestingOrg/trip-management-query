@@ -52,4 +52,15 @@ public class TripEventHandler {
         tripRepository.save(trip);
         LOG.info("Trip completed: {}", event.getId());
     }
+
+    @EventHandler
+    public void on(TripUpdatedEvent event) {
+        LOG.trace("Completing trip: {}", event.getId());
+        Trip trip = tripRepository.findOne(event.getId());
+        trip.setStatus(TripStatus.COMPLETED);
+        trip.setOriginAddress(event.getOriginAddress());
+        trip.setDestinationAddress(event.getDestinationAddress());
+        tripRepository.save(trip);
+        LOG.info("Trip completed: {}", event.getId());
+    }
 }
