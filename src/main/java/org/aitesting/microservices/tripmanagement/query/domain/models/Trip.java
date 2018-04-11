@@ -14,7 +14,8 @@ public class Trip {
     private TripInvoice tripInvoice;
     private TripStatus status;
 
-    public Trip(UUID id, UUID userId, String originAddress, String destinationAddress, TripInvoice tripInvoice, TripStatus status) {
+    public Trip(UUID id, UUID userId, String originAddress, String destinationAddress,
+                TripInvoice tripInvoice, TripStatus status) {
         this.id = id;
         this.userId = userId;
         this.originAddress = originAddress;
@@ -55,5 +56,7 @@ public class Trip {
         this.status = status;
     }
 
-    public void setTripInvoice(TripInvoice tripInvoice) { this.tripInvoice = tripInvoice; }
+    public void setTripInvoice(TripInvoice tripInvoice) {
+        this.tripInvoice = tripInvoice;
+    }
 }
