@@ -57,12 +57,6 @@ public class TripEventHandler {
     public void on(TripUpdatedEvent event) {
         LOG.trace("Updating trip: {}", event.getId());
         Trip trip = tripRepository.findOne(event.getId());
-        if (!trip.getOriginAddress().equals(event.getOriginAddress())) {
-            LOG.info("Origin address updated: {}", event.getOriginAddress());
-        }
-        if (!trip.getDestinationAddress().equals(event.getDestinationAddress())) {
-            LOG.info("Destination address updated: {}", event.getDestinationAddress());
-        }
         trip.setStatus(TripStatus.UPDATED);
         trip.setOriginAddress(event.getOriginAddress());
         trip.setDestinationAddress(event.getDestinationAddress());

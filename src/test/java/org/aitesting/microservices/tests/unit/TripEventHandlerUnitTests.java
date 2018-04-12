@@ -39,6 +39,9 @@ public class TripEventHandlerUnitTests {
     private TripCompletedEvent tripCompletedEvent;
 
     @Mock
+    private static TripUpdatedEvent tripUpdatedEvent;
+
+    @Mock
     private static Trip trip;
 
     @Before
@@ -96,6 +99,28 @@ public class TripEventHandlerUnitTests {
 
         //act
         tripEventHandler.on(tripCompletedEvent);
+
+        //assert
+        verify(tripRepository, times(1)).save(trip);
+    }
+
+    @Test
+    public void onTripUpdatedEvent_FindOneIsCalled() {
+        //arrange
+
+        //act
+        tripEventHandler.on(tripUpdatedEvent);
+
+        //assert
+        verify(tripRepository, times(1)).findOne(any(UUID.class));
+    }
+
+    @Test
+    public void onTripUpdatedEvent_SaveIsCalled() {
+        //arrange
+
+        //act
+        tripEventHandler.on(tripUpdatedEvent);
 
         //assert
         verify(tripRepository, times(1)).save(trip);
