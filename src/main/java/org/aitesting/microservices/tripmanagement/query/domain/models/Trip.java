@@ -13,6 +13,7 @@ public class Trip {
     private String destinationAddress;
     private TripInvoice tripInvoice;
     private TripStatus status;
+    private UUID driverId;
 
     public Trip(UUID id, UUID userId, String originAddress, String destinationAddress,
                 TripInvoice tripInvoice, TripStatus status) {
@@ -54,6 +55,10 @@ public class Trip {
 
     public void setStatus(TripStatus status) {
         this.status = status;
+    }
+
+    public void setDriverId(UUID driverId) {
+        this.driverId = driverId;
     }
 
     public void setTripInvoice(TripInvoice tripInvoice) {

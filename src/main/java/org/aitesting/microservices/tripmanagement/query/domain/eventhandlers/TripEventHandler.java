@@ -64,4 +64,14 @@ public class TripEventHandler {
         tripRepository.save(trip);
         LOG.info("Trip updated: {}", event.getId());
     }
+
+    @EventHandler
+    public void on(TripAcceptedEvent event) {
+        LOG.trace("Accepting trip: {}", event.getId());
+        Trip trip = tripRepository.findOne(event.getId());
+        trip.setStatus(TripStatus.ACCEPTED);
+        trip.setDriverId(event.getDriverId());
+        tripRepository.save(trip);
+        LOG.info("Trip accepted: {}", event.getId());
+    }
 }

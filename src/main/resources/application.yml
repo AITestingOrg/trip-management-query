@@ -24,8 +24,8 @@ server:
 amqp:
   events:
     host: ${RABBIT_HOST:localhost}
-    exchange-name: eventBus
-    queue-name: eventQueue
+    exchange-name: eventBusTrip
+    queue-name: eventQueueTrip
     handlers: org.aitesting.microservices.tripmanagement.query.domain.eventhandlers
 
 logging:
