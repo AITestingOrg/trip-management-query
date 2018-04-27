@@ -1,7 +1,7 @@
 # Mongo config
 spring:
   application:
-    name: trip-management-query
+    name: tripmanagementquery
   data:
     mongodb:
       database: trip-management-query

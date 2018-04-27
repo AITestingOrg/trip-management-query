@@ -1,6 +1,8 @@
 package org.aitesting.microservices.tests.helpers;
 
+import java.util.Date;
 import java.util.UUID;
+import org.aitesting.microservices.tripmanagement.common.models.TripInvoice;
 
 public class TestConstants {
     public static final UUID TRIP_ID1 = UUID.fromString("f849769e-2534-84a6-d475-5c2d701343ab");
@@ -10,4 +12,6 @@ public class TestConstants {
     public static final UUID USER_ID = UUID.fromString("123e4567-e89b-12d3-a456-426655440000");
     public static final String FROM = "from some place over there";
     public static final String TO = "to this other place";
+    public static final TripInvoice TRIP_INVOICE = new TripInvoice("1234 Address", "12343 address",
+            20.4, 34, 45.34, new Date());
 }

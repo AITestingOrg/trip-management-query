@@ -14,9 +14,8 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
-  trip-management-cmd:
+  tripmanagementcmd:
     image: aista/trip-management-cmd
-    container_name: 'trip-management-cmd'
     environment:
       - RABBIT_HOST=rabbitmq
       - MONGO_HOST=mongo
@@ -25,9 +24,8 @@ services:
     depends_on:
       - rabbitmq
       - mongo
-  trip-management-query:
+  tripmanagementquery:
     build: ./
-    container_name: 'trip-management-query'
     environment:
       - RABBIT_HOST=rabbitmq
       - MONGO_HOST=mongo
@@ -36,7 +34,7 @@ services:
     depends_on:
       - rabbitmq
       - mongo
-      - trip-management-cmd
+      - tripmanagementcmd
       - discovery-service
   discovery-service:
     image: springcloud/eureka

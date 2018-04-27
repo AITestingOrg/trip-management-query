@@ -31,10 +31,10 @@ public abstract class TripContractBase {
     public void setup() {
         RestAssuredMockMvc.webAppContextSetup(webApplicationContext);
         tripRepository.findAll();
-        tripRepository.save(new Trip(TRIP_ID1, USER_ID, FROM, TO, TripStatus.STARTED));
-        tripRepository.save(new Trip(TRIP_ID2, USER_ID, FROM, TO, TripStatus.CREATED));
-        tripRepository.save(new Trip(TRIP_ID3, USER_ID, FROM, TO, TripStatus.COMPLETED));
-        tripRepository.save(new Trip(TRIP_ID4, USER_ID, FROM, TO, TripStatus.CANCELED));
+        tripRepository.save(new Trip(TRIP_ID1, USER_ID, FROM, TO, TRIP_INVOICE, TripStatus.STARTED));
+        tripRepository.save(new Trip(TRIP_ID2, USER_ID, FROM, TO, TRIP_INVOICE, TripStatus.CREATED));
+        tripRepository.save(new Trip(TRIP_ID3, USER_ID, FROM, TO, TRIP_INVOICE, TripStatus.COMPLETED));
+        tripRepository.save(new Trip(TRIP_ID4, USER_ID, FROM, TO, TRIP_INVOICE, TripStatus.CANCELED));
     }
 
     @After

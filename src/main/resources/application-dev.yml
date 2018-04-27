@@ -1,6 +1,6 @@
 spring:
   application:
-    name: trip-management-query
+    name: tripmanagementquery
 
 server:
   port: ${APP_PORT:8080}

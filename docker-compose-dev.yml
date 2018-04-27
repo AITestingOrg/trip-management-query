@@ -14,9 +14,8 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
-  trip-management-cmd:
+  tripmanagementcmd:
     image: aista/trip-management-cmd
-    container_name: 'trip-management-cmd'
     environment:
       - RABBIT_HOST=rabbitmq
       - MONGO_HOST=mongo
