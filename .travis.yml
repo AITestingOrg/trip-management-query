@@ -1,6 +1,6 @@
 language: java
 jdk:
-- oraclejdk8
+  - oraclejdk8
 
 sudo: required
 
@@ -19,11 +19,11 @@ before_install:
   - echo "Docker Hub credentials are working"
 
 after_success:
-  - export ACTUAL_BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
-  - echo "Test Success - Branch($TRAVIS_BRANCH) Actual($ACTUAL_BRANCH) Pull Request($TRAVIS_PULL_REQUEST) Tag($TRAVIS_TAG) Commit($TRAVIS_COMMIT) PR($TRAVIS_PULL_REQUEST) Build($TRAVIS_BUILD_NUMBER)"
-  - if [[ "$ACTUAL_BRANCH" == "master" ]]; then echo -e "Push Container to Docker Hub"; fi
+  - docker -v
   - docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD
+  - set +e
   - export REPO=aista/trip-management-query
-  - export TAG=`if [ "$ACTUAL_BRANCH" == "master" ]; then echo "latest";else echo ""; fi`
-  - docker build -f Dockerfile -t $REPO:$TAG .
+  - pwd
+  - ls -a
+  - docker build -t $REPO:$TRAVIS_TAG .
   - docker push $REPO
