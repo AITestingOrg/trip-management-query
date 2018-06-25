@@ -26,7 +26,7 @@ services:
       - mongo
       - discovery-service
   discovery-service:
-    image: springcloud/eureka
+    image: aista/eureka
     ports:
       - "8761:8761"
 

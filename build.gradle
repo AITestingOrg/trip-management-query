@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '1.5.10.RELEASE'
+		springBootVersion = '1.5.14.RELEASE'
 		verifierVersion = '1.2.3.RELEASE'
 		axonVersion = '3.1.2'
 		springfoxVersion = '2.7.0'
@@ -32,7 +32,7 @@ version = '0.0.1'
 sourceCompatibility = 1.8
 
 ext {
-	springCloudVersion = 'Edgware.SR2'
+	springCloudVersion = 'Edgware.SR3'
 }
 
 repositories {
