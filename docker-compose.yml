@@ -35,8 +35,8 @@ services:
       - rabbitmq
       - mongo
       - tripmanagementcmd
-      - discovery-service
-  discovery-service:
+      - discoveryservice
+  discoveryservice:
     image: aista/eureka
     ports:
       - "8761:8761"
