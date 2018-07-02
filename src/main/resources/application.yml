@@ -16,7 +16,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://discovery-service:8761/eureka/
+      defaultZone: http://discoveryservice:8761/eureka/
 
 server:
   port: ${APP_PORT:8080}

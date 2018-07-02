@@ -24,9 +24,9 @@ services:
     depends_on:
       - rabbitmq
       - mongo
-      - discovery-service
-  discovery-service:
-    image: springcloud/eureka
+      - discoveryservice
+  discoveryservice:
+    image: aista/eureka
     ports:
       - "8761:8761"
 
