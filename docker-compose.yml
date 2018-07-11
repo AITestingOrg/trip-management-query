@@ -8,12 +8,14 @@ services:
       - '27017:27017'
     volumes:
       - 'mongo:/data/db'
+
   rabbitmq:
     image: rabbitmq:management
     container_name: 'rabbitmq'
     ports:
       - "5672:5672"
       - "15672:15672"
+
   tripmanagementcmd:
     image: aista/trip-management-cmd
     environment:
@@ -24,8 +26,9 @@ services:
     depends_on:
       - rabbitmq
       - mongo
+
   tripmanagementquery:
-    build: ./
+    image: aista/trip-management-query
     environment:
       - RABBIT_HOST=rabbitmq
       - MONGO_HOST=mongo
@@ -36,6 +39,7 @@ services:
       - mongo
       - tripmanagementcmd
       - discoveryservice
+
   discoveryservice:
     image: aista/eureka
     ports:
