@@ -1,8 +1,14 @@
 package org.aitesting.microservices.tests.provider;
 
-import static org.aitesting.microservices.tests.helpers.TestConstants.*;
+import static org.aitesting.microservices.tests.helpers.TestConstants.FROM;
+import static org.aitesting.microservices.tests.helpers.TestConstants.TO;
+import static org.aitesting.microservices.tests.helpers.TestConstants.TRIP_ID1;
+import static org.aitesting.microservices.tests.helpers.TestConstants.TRIP_ID2;
+import static org.aitesting.microservices.tests.helpers.TestConstants.TRIP_ID3;
+import static org.aitesting.microservices.tests.helpers.TestConstants.TRIP_ID4;
+import static org.aitesting.microservices.tests.helpers.TestConstants.TRIP_INVOICE;
+import static org.aitesting.microservices.tests.helpers.TestConstants.USER_ID;
 
-import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import org.aitesting.microservices.tripmanagement.common.events.TripStatus;
 import org.aitesting.microservices.tripmanagement.query.TripManagementQueryApplication;
 import org.aitesting.microservices.tripmanagement.query.domain.models.Trip;
@@ -10,16 +16,23 @@ import org.aitesting.microservices.tripmanagement.query.service.repositories.Tri
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Profile;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.context.WebApplicationContext;
 
-@RunWith(SpringRunner.class)
+import io.restassured.module.mockmvc.RestAssuredMockMvc;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = TripManagementQueryApplication.class, 
+    webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @Profile("test")
-@SpringBootTest(classes = TripManagementQueryApplication.class)
 public abstract class TripContractBase {
+    
+    protected static final Logger log = LoggerFactory.getLogger(TripContractBase.class);
 
     @Autowired
     private WebApplicationContext webApplicationContext;

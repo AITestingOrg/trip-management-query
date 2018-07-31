@@ -1,12 +1,11 @@
 # Mongo config
 spring:
-  application:
-    name: tripmanagementquery
+  profiles: dev
   data:
     mongodb:
       database: trip-management-query
       host: ${MONGO_HOST:localhost}
-      port: ${MONGO_PORT:27017}
+      port: 27017
   rabbitmq:
     host: ${RABBIT_HOST:localhost}
     port: 5672
@@ -45,7 +44,42 @@ logging:
 ---
 spring:
   profiles: test
+  data:
+    mongodb:
+      database: trip-management-query
+      host: ${DOCKER_MACHINE_IP:localhost}
+      port: 27017
+  rabbitmq:
+    host: ${DOCKER_MACHINE_IP:localhost}
+    port: 5672
+    username: guest
+    password: guest
 
 eureka:
   client:
-    enabled: false
+    serviceUrl:
+      defaultZone: http://DOCKER_MACHINE_IP:8761/eureka/
+
+server:
+  port: ${APP_PORT:8080}
+
+amqp:
+  events:
+    host: ${DOCKER_MACHINE_IP:localhost}
+    exchange-name: eventBus
+    queue-name: eventQueue
+    handlers: org.aitesting.microservices.tripmanagement.query.domain.eventhandlers
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        security: DEBUG
+        web:
+          filter:
+            CommonsRequestLoggingFilter: DEBUG
+      hibernate: DEBUG
+      apache:
+        commons:
+          dbcp2: DEBUG

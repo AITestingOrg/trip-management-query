@@ -37,7 +37,7 @@ import org.springframework.cloud.contract.spec.Contract
         description("When a GET request for api/trip/{id} with invalid id should return 400")
         request {
             method 'GET'
-            url '/api/v1/trip/user/123e4567-e89b-12d3-a456-426655440000/status/badIdString'
+            url '/api/v1/trip/user/4eaf29bc-3909-49d4-a104-3d17f68ba672/status/badIdString'
         }
         response {
             status 400
